@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/screens/Menus/HUDBottom.gd" type="Script" id=1]
+
+[node name="HUDBottom" type="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 208, 16 )
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_right = 1.0
+margin_bottom = 16.0
+custom_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 8.0
+size_flags_vertical = 2
+
+[node name="Lifes" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+margin_right = 110.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+text = "Vidas"
+
+[node name="Loops" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+margin_left = 114.0
+margin_right = 224.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+text = "Loops"
+align = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/VBoxContainer"]
+margin_top = 8.0
+margin_right = 224.0
+margin_bottom = 16.0
+size_flags_vertical = 2
+
+[node name="Control" type="Control" parent="Background/VBoxContainer/HBoxContainer2"]
+margin_right = 100.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/VBoxContainer/HBoxContainer2"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 50.0
+percent_visible = false
+
+[node name="Time" type="Label" parent="Background/VBoxContainer/HBoxContainer2"]
+margin_left = 208.0
+margin_right = 224.0
+margin_bottom = 8.0
+text = "time"
+align = 2
+
+[connection signal="value_changed" from="Background/VBoxContainer/HBoxContainer2/ProgressBar" to="." method="_on_ProgressBar_value_changed"]
