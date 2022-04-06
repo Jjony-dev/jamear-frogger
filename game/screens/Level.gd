@@ -25,6 +25,8 @@ func _ready() -> void:
 	hub_bottom.time_start()
 	PersistenceData.last_score = 0
 	resetFrog()
+	if OS.get_name() != "Android" and OS.get_name() != "iOS":
+		$SwipeScreenArea.queue_free()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_type():

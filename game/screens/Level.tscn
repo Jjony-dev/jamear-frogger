@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/entities/level/assets/SpritesSheet_Tiles.png" type="Texture" id=1]
 [ext_resource path="res://game/entities/frog/Frog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/swipe_controller/swipe_controller.gd" type="Script" id=3]
 [ext_resource path="res://game/entities/row/Row.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/entities/entities/WinZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/screens/Level.gd" type="Script" id=9]
@@ -375,6 +376,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 16.0
 margin_bottom = 16.0
+mouse_filter = 2
 script = ExtResource( 9 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -535,14 +537,23 @@ position = Vector2( 0, -16 )
 anchor_mode = 0
 current = true
 
+[node name="SwipeScreenArea" type="Node2D" parent="."]
+position = Vector2( 113, 114 )
+script = ExtResource( 3 )
+input_actions = PoolStringArray( "up", "right", "down", "left" )
+area_size = Vector2( 256, 256 )
+MIN_LENGTH_VECTOR = 15
+
 [node name="HUDBottom" parent="." instance=ExtResource( 10 )]
 anchor_top = 1.0
 margin_top = -32.0
 margin_bottom = -16.0
+mouse_filter = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

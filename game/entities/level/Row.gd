@@ -46,7 +46,7 @@ func _ready() -> void:
 
 func _on_Area2D2_area_entered(area: Area2D) -> void:
 	var object: Node2D = area.owner
-	if object.has_method("add_velocity"):
+	if object and object.has_method("add_velocity"):
 		object.add_velocity(Vector2(current_velocity,0))
 
 
