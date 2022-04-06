@@ -1,4 +1,4 @@
-extends Node2D
+extends BaseEntity
 
 export var DIVE: bool = false
 export var DIVE_VELOCITY: float = 10.0
@@ -7,7 +7,6 @@ export var DIVE_COOLDOWN: float = 1.0
 onready var sprite := $Sprite
 onready var animation := $AnimationPlayer
 
-var velocity: Vector2 = Vector2.ZERO
 var dive_cooldown: float = DIVE_COOLDOWN
 
 func _ready() -> void:
@@ -26,16 +25,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	match anim_name:
 		"DiveIn":
 			animation.play("DiveOut")
-
-func add_velocity(extra_vel: Vector2) -> void:
-	velocity += extra_vel
-
-func remove_velocity(extra_vel: Vector2) -> void:
-	velocity -= extra_vel
-
-func reset_pos(g_position: Vector2) -> void:
-	global_position = g_position
-
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	var object: Node2D = body.owner
